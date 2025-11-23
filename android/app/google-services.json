@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1016377798394",
+    "project_id": "smile-kids-89fd6",
+    "storage_bucket": "smile-kids-89fd6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016377798394:android:6cbbd7448a0ed63dfe2343",
+        "android_client_info": {
+          "package_name": "com.mycompany.smilekids"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016377798394-8fm1g978tco4gjhdqj6clg1kglci905u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.smilekids",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "1016377798394-s9sl61c2ruutsoo4u5v4pcbcsmn0gi8c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWQNDOWqI6mzKaVn25ucebzeWi6-_9wy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016377798394-s9sl61c2ruutsoo4u5v4pcbcsmn0gi8c.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1016377798394-urpovc9km0reqva10qub55ir7svjlfu9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.smilekids"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
