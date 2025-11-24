@@ -10,3 +10,4 @@ export '/iniciary_crear_sesion/iniciary_crear_sesion_widget.dart'
 export '/formulario/formulario_widget.dart' show FormularioWidget;
 export '/localizar/localizar_widget.dart' show LocalizarWidget;
 export '/editar/editar_widget.dart' show EditarWidget;
+export '/inicio/notas_copy/notas_copy_widget.dart' show NotasCopyWidget;

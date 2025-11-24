@@ -157,7 +157,7 @@ class _IniciaryCrearSesionWidgetState extends State<IniciaryCrearSesionWidget>
                     color: FlutterFlowTheme.of(context).primaryBackground,
                     borderRadius: BorderRadius.circular(16.0),
                   ),
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
@@ -167,8 +167,8 @@ class _IniciaryCrearSesionWidgetState extends State<IniciaryCrearSesionWidget>
                         Theme.of(context).brightness == Brightness.dark
                             ? 'assets/images/logo_aplicado.png'
                             : 'assets/images/logo_azul.png',
-                        width: 140.0,
-                        height: 140.0,
+                        width: 160.0,
+                        height: 160.0,
                         fit: BoxFit.cover,
                         alignment: Alignment(0.0, -1.0),
                       ),

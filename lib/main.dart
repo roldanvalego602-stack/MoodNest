@@ -152,6 +152,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'Historial': HistorialWidget(),
       'Notas': NotasWidget(),
       'Chat': ChatWidget(),
+      'NotasCopy': NotasCopyWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -201,6 +202,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'Chat',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.sticky_note_2,
+              size: 24.0,
+            ),
+            label: 'Notas',
             tooltip: '',
           )
         ],

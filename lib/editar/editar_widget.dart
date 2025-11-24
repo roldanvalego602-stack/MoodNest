@@ -72,14 +72,14 @@ class _EditarWidgetState extends State<EditarWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color(0x5FFFAB6B),
+                  color: Color(0x5F73FF6B),
                   shape: BoxShape.circle,
                 ),
                 child: Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Icon(
-                    Icons.menu_book,
-                    color: Color(0xFFFF5B00),
+                    Icons.edit_document,
+                    color: Color(0xFF28A519),
                     size: 29.0,
                   ),
                 ),
@@ -89,7 +89,7 @@ class _EditarWidgetState extends State<EditarWidget> {
           title: Align(
             alignment: AlignmentDirectional(-1.0, 0.0),
             child: Text(
-              'Formulario',
+              'Editar',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     font: GoogleFonts.interTight(
                       fontWeight: FontWeight.bold,
@@ -859,7 +859,7 @@ class _EditarWidgetState extends State<EditarWidget> {
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 46.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 6.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         await currentUserReference!.update({
@@ -913,6 +913,54 @@ class _EditarWidgetState extends State<EditarWidget> {
                         elevation: 3.0,
                         borderSide: BorderSide(
                           color: Color(0xFF112ACB),
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(40.0),
+                      ),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 46.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        context.safePop();
+                      },
+                      text: 'Cancelar',
+                      options: FFButtonOptions(
+                        width: 230.0,
+                        height: 52.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFFE8C6C7),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: Color(0xF4E90404),
+                                  fontSize: 21.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                        elevation: 3.0,
+                        borderSide: BorderSide(
+                          color: Color(0xFFCB1114),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(40.0),

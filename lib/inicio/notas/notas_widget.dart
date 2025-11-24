@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -110,31 +111,10 @@ class _NotasWidgetState extends State<NotasWidget> {
                     ),
                     shape: BoxShape.circle,
                   ),
-                  child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 3.0),
-                      child: Text(
-                        '+',
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.inter(
-                                fontWeight: FontWeight.normal,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
-                              ),
-                              color: Colors.white,
-                              fontSize: 30.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.normal,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
-                            ),
-                      ),
-                    ),
+                  child: Icon(
+                    Icons.add,
+                    color: Color(0xFEF9F5F5),
+                    size: 27.0,
                   ),
                 ),
               ),
@@ -153,7 +133,7 @@ class _NotasWidgetState extends State<NotasWidget> {
                 child: Padding(
                   padding: EdgeInsets.all(14.0),
                   child: Text(
-                    'Guía para usar el muñeco terapetico',
+                    'Tus observaciones',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           font: GoogleFonts.notoSansJp(
                             fontWeight: FontWeight.w500,
@@ -235,6 +215,43 @@ class _NotasWidgetState extends State<NotasWidget> {
                                   .fontStyle,
                             ),
                       ),
+                    ),
+                    StreamBuilder<List<NotasRecord>>(
+                      stream: queryNotasRecord(
+                        queryBuilder: (notasRecord) => notasRecord
+                            .orderBy('tiempotexto', descending: true),
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 40.0,
+                              height: 40.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                        List<NotasRecord> listViewNotasRecordList =
+                            snapshot.data!;
+
+                        return ListView.builder(
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemCount: listViewNotasRecordList.length,
+                          itemBuilder: (context, listViewIndex) {
+                            final listViewNotasRecord =
+                                listViewNotasRecordList[listViewIndex];
+                            return Container(
+                                width: 100, height: 100, color: Colors.green);
+                          },
+                        );
+                      },
                     ),
                   ],
                 ),

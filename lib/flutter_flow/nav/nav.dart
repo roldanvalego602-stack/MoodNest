@@ -141,6 +141,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: EditarWidget.routeName,
           path: EditarWidget.routePath,
           builder: (context, params) => EditarWidget(),
+        ),
+        FFRoute(
+          name: NotasCopyWidget.routeName,
+          path: NotasCopyWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'NotasCopy')
+              : NotasCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

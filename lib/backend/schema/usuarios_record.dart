@@ -106,6 +106,16 @@ class UsuariosRecord extends FirestoreRecord {
   List<String> get sensible => _sensible ?? const [];
   bool hasSensible() => _sensible != null;
 
+  // "Texto" field.
+  String? _texto;
+  String get texto => _texto ?? '';
+  bool hasTexto() => _texto != null;
+
+  // "Creartexto" field.
+  DateTime? _creartexto;
+  DateTime? get creartexto => _creartexto;
+  bool hasCreartexto() => _creartexto != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -125,6 +135,8 @@ class UsuariosRecord extends FirestoreRecord {
     _nsensible = snapshotData['NSENSIBLE'] as String?;
     _formulario = snapshotData['Formulario'] as bool?;
     _sensible = getDataList(snapshotData['sensible']);
+    _texto = snapshotData['Texto'] as String?;
+    _creartexto = snapshotData['Creartexto'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -179,6 +191,8 @@ Map<String, dynamic> createUsuariosRecordData({
   String? ngenero,
   String? nsensible,
   bool? formulario,
+  String? texto,
+  DateTime? creartexto,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -199,6 +213,8 @@ Map<String, dynamic> createUsuariosRecordData({
       'NGENERO': ngenero,
       'NSENSIBLE': nsensible,
       'Formulario': formulario,
+      'Texto': texto,
+      'Creartexto': creartexto,
     }.withoutNulls,
   );
 
@@ -228,7 +244,9 @@ class UsuariosRecordDocumentEquality implements Equality<UsuariosRecord> {
         e1?.ngenero == e2?.ngenero &&
         e1?.nsensible == e2?.nsensible &&
         e1?.formulario == e2?.formulario &&
-        listEquality.equals(e1?.sensible, e2?.sensible);
+        listEquality.equals(e1?.sensible, e2?.sensible) &&
+        e1?.texto == e2?.texto &&
+        e1?.creartexto == e2?.creartexto;
   }
 
   @override
@@ -250,7 +268,9 @@ class UsuariosRecordDocumentEquality implements Equality<UsuariosRecord> {
         e?.ngenero,
         e?.nsensible,
         e?.formulario,
-        e?.sensible
+        e?.sensible,
+        e?.texto,
+        e?.creartexto
       ]);
 
   @override
