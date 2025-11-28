@@ -588,7 +588,6 @@ class _ChatWidgetState extends State<ChatWidget> {
                       await ChatAIRecord.collection.doc().set({
                         ...createChatAIRecordData(
                           textoAI: _model.jhhjgjh,
-                          aIusuario: false,
                         ),
                         ...mapToFirestore(
                           {
