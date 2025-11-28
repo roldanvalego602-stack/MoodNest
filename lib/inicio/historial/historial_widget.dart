@@ -43,8 +43,6 @@ class _HistorialWidgetState extends State<HistorialWidget> {
             .then((_) => _model.soundPlayer!.play());
       }
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -116,8 +114,9 @@ class _HistorialWidgetState extends State<HistorialWidget> {
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
+            primary: false,
             child: Column(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Align(
                   alignment: AlignmentDirectional(-1.0, 0.0),
@@ -175,7 +174,7 @@ class _HistorialWidgetState extends State<HistorialWidget> {
                             listViewHistorialRecordList[listViewIndex];
                         return Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              70.0, 0.0, 70.0, 0.0),
+                              70.0, 0.0, 70.0, 25.0),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
@@ -259,9 +258,11 @@ class _HistorialWidgetState extends State<HistorialWidget> {
                                   child: Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Text(
-                                      listViewHistorialRecord
-                                          .tiempohistoria!.secondsSinceEpoch
-                                          .toString(),
+                                      valueOrDefault<String>(
+                                        listViewHistorialRecord.tiempohistoria
+                                            ?.toString(),
+                                        '0',
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(

@@ -50,8 +50,6 @@ class _FormularioWidgetState extends State<FormularioWidget> {
 
     _model.contacto3TextController ??= TextEditingController();
     _model.contacto3FocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

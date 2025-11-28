@@ -47,8 +47,6 @@ class _AyudaySoporteWidgetState extends State<AyudaySoporteWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

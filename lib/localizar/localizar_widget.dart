@@ -1,3 +1,4 @@
+import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +26,6 @@ class _LocalizarWidgetState extends State<LocalizarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => LocalizarModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -45,6 +44,7 @@ class _LocalizarWidgetState extends State<LocalizarWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
+        resizeToAvoidBottomInset: false,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
@@ -99,7 +99,29 @@ class _LocalizarWidgetState extends State<LocalizarWidget> {
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [],
+            children: [
+              Expanded(
+                child: FlutterFlowGoogleMap(
+                  controller: _model.googleMapsController,
+                  onCameraIdle: (latLng) => _model.googleMapsCenter = latLng,
+                  initialLocation: _model.googleMapsCenter ??=
+                      LatLng(23.99020508054646, -104.61767058183122),
+                  markerColor: GoogleMarkerColor.violet,
+                  mapType: MapType.satellite,
+                  style: GoogleMapStyle.standard,
+                  initialZoom: 18.0,
+                  allowInteraction: true,
+                  allowZoom: true,
+                  showZoomControls: true,
+                  showLocation: true,
+                  showCompass: false,
+                  showMapToolbar: false,
+                  showTraffic: false,
+                  centerMapOnMarkerTap: true,
+                  mapTakesGesturePreference: false,
+                ),
+              ),
+            ],
           ),
         ),
       ),

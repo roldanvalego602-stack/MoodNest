@@ -164,6 +164,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: NumerosemergenciaWidget.routeName,
           path: NumerosemergenciaWidget.routePath,
           builder: (context, params) => NumerosemergenciaWidget(),
+        ),
+        FFRoute(
+          name: PagenialoooWidget.routeName,
+          path: PagenialoooWidget.routePath,
+          builder: (context, params) => PagenialoooWidget(),
+        ),
+        FFRoute(
+          name: PruebaWidget.routeName,
+          path: PruebaWidget.routePath,
+          builder: (context, params) => PruebaWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

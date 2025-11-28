@@ -31,8 +31,6 @@ class _AgregarnotaWidgetState extends State<AgregarnotaWidget> {
 
     _model.textController ??= TextEditingController(text: _model.notaTexto);
     _model.textFieldFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

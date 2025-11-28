@@ -27,8 +27,6 @@ class _NumerosemergenciaWidgetState extends State<NumerosemergenciaWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NumerosemergenciaModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

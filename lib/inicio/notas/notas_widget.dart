@@ -44,8 +44,6 @@ class _NotasWidgetState extends State<NotasWidget> {
             .then((_) => _model.soundPlayer!.play());
       }
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -154,6 +152,7 @@ class _NotasWidgetState extends State<NotasWidget> {
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
+            primary: false,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [

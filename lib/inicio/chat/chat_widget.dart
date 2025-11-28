@@ -49,8 +49,6 @@ class _ChatWidgetState extends State<ChatWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -118,121 +116,69 @@ class _ChatWidgetState extends State<ChatWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Align(
-                alignment: AlignmentDirectional(-1.0, 0.0),
-                child: Padding(
-                  padding: EdgeInsets.all(14.0),
-                  child: Text(
-                    'Asistente inteligente que resuelve cualquier duda',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.notoSansJp(
+          child: SingleChildScrollView(
+            primary: false,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  child: Padding(
+                    padding: EdgeInsets.all(14.0),
+                    child: Text(
+                      'Asistente inteligente que resuelve cualquier duda',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.notoSansJp(
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                            color: Color(0x96000000),
+                            fontSize: 15.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
                             fontStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .fontStyle,
                           ),
-                          color: Color(0x96000000),
-                          fontSize: 15.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.w500,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                        ),
+                    ),
                   ),
                 ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(-1.0, 0.0),
-                child: Padding(
-                  padding: EdgeInsets.all(14.0),
-                  child: Text(
-                    'Preguntas Frecuentes:',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.notoSansJp(
+                Align(
+                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  child: Padding(
+                    padding: EdgeInsets.all(14.0),
+                    child: Text(
+                      'Preguntas Frecuentes:',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.notoSansJp(
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                            color: Color(0x96000000),
+                            fontSize: 20.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                             fontStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .fontStyle,
                           ),
-                          color: Color(0x96000000),
-                          fontSize: 20.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.bold,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                        ),
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).primaryBackground,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 0.0, 15.0, 20.0),
-                        child: AuthUserStreamWidget(
-                          builder: (context) => Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 2.0,
-                                  color: Color(0x73000000),
-                                  offset: Offset(
-                                    0.0,
-                                    0.0,
-                                  ),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            child: Align(
-                              alignment: AlignmentDirectional(-1.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsets.all(14.0),
-                                child: Text(
-                                  '¿Cómo usar la vibración?',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        font: GoogleFonts.notoSansJp(
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                        color: Color(0xF2000000),
-                                        fontSize: 20.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle:
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .fontStyle,
-                                      ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (valueOrDefault<bool>(
-                              currentUserDocument?.notassssss, false) ==
-                          true)
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).primaryBackground,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 0.0, 15.0, 20.0),
@@ -259,7 +205,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                 child: Padding(
                                   padding: EdgeInsets.all(14.0),
                                   child: Text(
-                                    '¿Cómo usar el calor?',
+                                    '¿Cómo usar la vibración?',
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -286,346 +232,413 @@ class _ChatWidgetState extends State<ChatWidget> {
                             ),
                           ),
                         ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 0.0, 15.0, 20.0),
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 2.0,
-                                color: Color(0x73000000),
-                                offset: Offset(
-                                  0.0,
-                                  0.0,
+                        if (valueOrDefault<bool>(
+                                currentUserDocument?.notassssss, false) ==
+                            true)
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                15.0, 0.0, 15.0, 20.0),
+                            child: AuthUserStreamWidget(
+                              builder: (context) => Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 2.0,
+                                      color: Color(0x73000000),
+                                      offset: Offset(
+                                        0.0,
+                                        0.0,
+                                      ),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(10.0),
                                 ),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(10.0),
+                                child: Align(
+                                  alignment: AlignmentDirectional(-1.0, 0.0),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(14.0),
+                                    child: Text(
+                                      '¿Cómo usar el calor?',
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.notoSansJp(
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: Color(0xF2000000),
+                                            fontSize: 20.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
-                          child: Align(
-                            alignment: AlignmentDirectional(-1.0, 0.0),
-                            child: Padding(
-                              padding: EdgeInsets.all(14.0),
-                              child: Text(
-                                '¿Qué debo hacer si mi hijo no quiere jugar con el muñeco MOMO?',
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      font: GoogleFonts.notoSansJp(
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              15.0, 0.0, 15.0, 20.0),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 2.0,
+                                  color: Color(0x73000000),
+                                  offset: Offset(
+                                    0.0,
+                                    0.0,
+                                  ),
+                                )
+                              ],
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: Align(
+                              alignment: AlignmentDirectional(-1.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsets.all(14.0),
+                                child: Text(
+                                  '¿Qué debo hacer si mi hijo no quiere jugar con el muñeco MOMO?',
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.notoSansJp(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: Color(0xF2000000),
+                                        fontSize: 20.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xF2000000),
-                                      fontSize: 20.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                StreamBuilder<List<ChatAIRecord>>(
+                  stream: queryChatAIRecord(
+                    queryBuilder: (chatAIRecord) =>
+                        chatAIRecord.orderBy('AItiempo'),
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: SpinKitWave(
+                            color: FlutterFlowTheme.of(context).primary,
+                            size: 50.0,
+                          ),
+                        ),
+                      );
+                    }
+                    List<ChatAIRecord> listViewChatAIRecordList =
+                        snapshot.data!;
+
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: listViewChatAIRecordList.length,
+                      itemBuilder: (context, listViewIndex) {
+                        final listViewChatAIRecord =
+                            listViewChatAIRecordList[listViewIndex];
+                        return Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              valueOrDefault<String>(
+                                _model.jhhjgjh,
+                                'Esperando',
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                              ),
+                                    fontSize: 19.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                             ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              StreamBuilder<List<ChatAIRecord>>(
-                stream: queryChatAIRecord(
-                  queryBuilder: (chatAIRecord) =>
-                      chatAIRecord.orderBy('AItiempo'),
-                ),
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: SizedBox(
-                        width: 50.0,
-                        height: 50.0,
-                        child: SpinKitWave(
-                          color: FlutterFlowTheme.of(context).primary,
-                          size: 50.0,
-                        ),
-                      ),
+                            Text(
+                              listViewChatAIRecord.textoAI,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    fontSize: 19.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                            ),
+                          ],
+                        );
+                      },
                     );
-                  }
-                  List<ChatAIRecord> listViewChatAIRecordList = snapshot.data!;
+                  },
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: AlignmentDirectional(0.0, 1.0),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          10.0, 55.0, 10.0, 10.0),
+                      child: Container(
+                        width: double.infinity,
+                        child: TextFormField(
+                          controller: _model.textController,
+                          focusNode: _model.textFieldFocusNode,
+                          onFieldSubmitted: (_) async {
+                            await callAiAgent(
+                              context: context,
+                              prompt: _model.textController.text,
+                              threadId: '12',
+                              agentCloudFunctionName: 'chatbot',
+                              provider: 'GOOGLE',
+                              agentJson:
+                                  '{\"status\":\"LIVE\",\"identifier\":{\"name\":\"chatbot\",\"key\":\"d2obr\"},\"name\":\"chatbot\",\"description\":\"Nos ayuda a responder dudas a padres sobre sus niños autistas\",\"aiModel\":{\"provider\":\"GOOGLE\",\"model\":\"gemini-1.5-flash\",\"parameters\":{\"temperature\":{\"inputValue\":1},\"maxTokens\":{\"inputValue\":8192},\"topP\":{\"inputValue\":0.95}},\"messages\":[{\"role\":\"SYSTEM\",\"text\":\"Nos facilita la resolución de datos\"}]},\"requestOptions\":{\"requestTypes\":[\"PLAINTEXT\"]},\"responseOptions\":{\"responseType\":\"PLAINTEXT\"}}',
+                              responseType: 'PLAINTEXT',
+                            ).then((generatedText) {
+                              safeSetState(() => _model.tr = generatedText);
+                            });
 
-                  return ListView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: listViewChatAIRecordList.length,
-                    itemBuilder: (context, listViewIndex) {
-                      final listViewChatAIRecord =
-                          listViewChatAIRecordList[listViewIndex];
-                      return Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            listViewChatAIRecord.textoAI,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
+                            safeSetState(() {});
+                          },
+                          autofocus: false,
+                          enabled: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            isDense: true,
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
                                 .override(
                                   font: GoogleFonts.inter(
                                     fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .labelMedium
                                         .fontWeight,
                                     fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .labelMedium
                                         .fontStyle,
                                   ),
-                                  fontSize: 19.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .labelMedium
                                       .fontWeight,
                                   fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .labelMedium
                                       .fontStyle,
                                 ),
-                          ),
-                          Text(
-                            listViewChatAIRecord.hasTextoAI().toString(),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
+                            hintText: 'Escribe un mensaje...',
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
                                 .override(
                                   font: GoogleFonts.inter(
                                     fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .labelMedium
                                         .fontWeight,
                                     fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .labelMedium
                                         .fontStyle,
                                   ),
-                                  fontSize: 19.0,
+                                  fontSize: 25.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .labelMedium
                                       .fontWeight,
                                   fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .labelMedium
                                       .fontStyle,
                                 ),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
-              ),
-              Expanded(
-                child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 40.0),
-                    child: Container(
-                      width: double.infinity,
-                      child: TextFormField(
-                        controller: _model.textController,
-                        focusNode: _model.textFieldFocusNode,
-                        onFieldSubmitted: (_) async {
-                          await callAiAgent(
-                            context: context,
-                            prompt: _model.textController.text,
-                            threadId: '12',
-                            agentCloudFunctionName: 'chatbot',
-                            provider: 'GOOGLE',
-                            agentJson:
-                                '{\"status\":\"LIVE\",\"identifier\":{\"name\":\"chatbot\",\"key\":\"d2obr\"},\"name\":\"chatbot\",\"description\":\"Nos ayuda a responder dudas a padres sobre sus niños autistas\",\"aiModel\":{\"provider\":\"GOOGLE\",\"model\":\"gemini-1.5-flash\",\"parameters\":{\"temperature\":{\"inputValue\":1},\"maxTokens\":{\"inputValue\":8192},\"topP\":{\"inputValue\":0.95}},\"messages\":[{\"role\":\"SYSTEM\",\"text\":\"Nos facilita la resolución de datos\"}]},\"requestOptions\":{\"requestTypes\":[\"PLAINTEXT\"]},\"responseOptions\":{\"responseType\":\"PLAINTEXT\"}}',
-                            responseType: 'PLAINTEXT',
-                          ).then((generatedText) {
-                            safeSetState(() => _model.tr = generatedText);
-                          });
-
-                          safeSetState(() {});
-                        },
-                        autofocus: false,
-                        enabled: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          isDense: true,
-                          labelStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontStyle,
-                                  ),
-                          hintText: 'Escribe un mensaje...',
-                          hintStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontStyle,
-                                    ),
-                                    fontSize: 25.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontStyle,
-                                  ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0xFF2B64E4),
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          filled: true,
-                          fillColor:
-                              FlutterFlowTheme.of(context).primaryBackground,
-                          prefixIcon: Icon(
-                            Icons.text_fields,
-                          ),
-                          suffixIcon: Icon(
-                            Icons.textsms_rounded,
-                            size: 22.0,
-                          ),
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.inter(
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xFF2B64E4),
+                                width: 1.0,
                               ),
-                              letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
+                              borderRadius: BorderRadius.circular(12.0),
                             ),
-                        cursorColor: FlutterFlowTheme.of(context).primaryText,
-                        enableInteractiveSelection: true,
-                        validator:
-                            _model.textControllerValidator.asValidator(context),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            filled: true,
+                            fillColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            prefixIcon: Icon(
+                              Icons.text_fields,
+                            ),
+                            suffixIcon: Icon(
+                              Icons.keyboard_arrow_right,
+                              size: 22.0,
+                            ),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                          cursorColor: FlutterFlowTheme.of(context).primaryText,
+                          enableInteractiveSelection: true,
+                          validator: _model.textControllerValidator
+                              .asValidator(context),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    await callAiAgent(
-                      context: context,
-                      prompt: _model.textController.text,
-                      threadId: random_data.randomInteger(0, 10).toString(),
-                      agentCloudFunctionName: 'chatbot',
-                      provider: 'GOOGLE',
-                      agentJson:
-                          '{\"status\":\"LIVE\",\"identifier\":{\"name\":\"chatbot\",\"key\":\"d2obr\"},\"name\":\"chatbot\",\"description\":\"Nos ayuda a responder dudas a padres sobre sus niños autistas\",\"aiModel\":{\"provider\":\"GOOGLE\",\"model\":\"gemini-1.5-flash\",\"parameters\":{\"temperature\":{\"inputValue\":1},\"maxTokens\":{\"inputValue\":8192},\"topP\":{\"inputValue\":0.95}},\"messages\":[{\"role\":\"SYSTEM\",\"text\":\"Nos facilita la resolución de datos\"}]},\"requestOptions\":{\"requestTypes\":[\"PLAINTEXT\"]},\"responseOptions\":{\"responseType\":\"PLAINTEXT\"}}',
-                      responseType: 'PLAINTEXT',
-                    ).then((generatedText) {
-                      safeSetState(() => _model.jhhjgjh = generatedText);
-                    });
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      await callAiAgent(
+                        context: context,
+                        prompt: _model.textController.text,
+                        threadId: random_data.randomInteger(0, 10).toString(),
+                        agentCloudFunctionName: 'chatbot',
+                        provider: 'GOOGLE',
+                        agentJson:
+                            '{\"status\":\"LIVE\",\"identifier\":{\"name\":\"chatbot\",\"key\":\"d2obr\"},\"name\":\"chatbot\",\"description\":\"Nos ayuda a responder dudas a padres sobre sus niños autistas\",\"aiModel\":{\"provider\":\"GOOGLE\",\"model\":\"gemini-1.5-flash\",\"parameters\":{\"temperature\":{\"inputValue\":1},\"maxTokens\":{\"inputValue\":8192},\"topP\":{\"inputValue\":0.95}},\"messages\":[{\"role\":\"SYSTEM\",\"text\":\"Nos facilita la resolución de datos\"}]},\"requestOptions\":{\"requestTypes\":[\"PLAINTEXT\"]},\"responseOptions\":{\"responseType\":\"PLAINTEXT\"}}',
+                        responseType: 'PLAINTEXT',
+                      ).then((generatedText) {
+                        safeSetState(() => _model.jhhjgjh = generatedText);
+                      });
 
-                    await ChatAIRecord.collection.doc().set({
-                      ...createChatAIRecordData(
-                        textoAI: _model.jhhjgjh,
-                        aIusuario: false,
-                      ),
-                      ...mapToFirestore(
-                        {
-                          'AItiempo': FieldValue.serverTimestamp(),
-                        },
-                      ),
-                    });
-
-                    safeSetState(() {});
-                  },
-                  text: 'Preguntar',
-                  icon: Icon(
-                    Icons.play_arrow,
-                    size: 19.0,
-                  ),
-                  options: FFButtonOptions(
-                    width: double.infinity,
-                    height: 60.0,
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          font: GoogleFonts.interTight(
-                            fontWeight: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .fontStyle,
-                          ),
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          fontSize: 19.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
-                              .titleSmall
-                              .fontWeight,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                      await ChatAIRecord.collection.doc().set({
+                        ...createChatAIRecordData(
+                          textoAI: _model.jhhjgjh,
+                          aIusuario: false,
                         ),
-                    elevation: 0.0,
-                    borderRadius: BorderRadius.circular(8.0),
+                        ...mapToFirestore(
+                          {
+                            'AItiempo': FieldValue.serverTimestamp(),
+                          },
+                        ),
+                      });
+
+                      safeSetState(() {});
+                    },
+                    text: 'Preguntar',
+                    icon: Icon(
+                      Icons.play_arrow,
+                      size: 19.0,
+                    ),
+                    options: FFButtonOptions(
+                      width: double.infinity,
+                      height: 60.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                font: GoogleFonts.interTight(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 19.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .fontStyle,
+                              ),
+                      elevation: 0.0,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

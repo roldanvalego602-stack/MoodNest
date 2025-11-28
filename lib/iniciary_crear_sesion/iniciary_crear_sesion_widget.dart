@@ -126,8 +126,6 @@ class _IniciaryCrearSesionWidgetState extends State<IniciaryCrearSesionWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -216,6 +214,7 @@ class _IniciaryCrearSesionWidgetState extends State<IniciaryCrearSesionWidget>
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 170.0, 0.0, 0.0),
                       child: SingleChildScrollView(
+                        primary: false,
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,

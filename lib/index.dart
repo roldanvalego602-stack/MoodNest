@@ -15,3 +15,5 @@ export '/ayuday_soporte/ayuday_soporte_widget.dart' show AyudaySoporteWidget;
 export '/editar/editar_widget.dart' show EditarWidget;
 export '/numerosemergencia/numerosemergencia_widget.dart'
     show NumerosemergenciaWidget;
+export '/pagenialooo/pagenialooo_widget.dart' show PagenialoooWidget;
+export '/prueba/prueba_widget.dart' show PruebaWidget;

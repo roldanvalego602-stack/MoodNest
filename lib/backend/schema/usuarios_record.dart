@@ -156,6 +156,16 @@ class UsuariosRecord extends FirestoreRecord {
   bool get c3 => _c3 ?? false;
   bool hasC3() => _c3 != null;
 
+  // "editarcontacto" field.
+  bool? _editarcontacto;
+  bool get editarcontacto => _editarcontacto ?? false;
+  bool hasEditarcontacto() => _editarcontacto != null;
+
+  // "Latitud" field.
+  LatLng? _latitud;
+  LatLng? get latitud => _latitud;
+  bool hasLatitud() => _latitud != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -185,6 +195,8 @@ class UsuariosRecord extends FirestoreRecord {
     _c1 = snapshotData['C1'] as bool?;
     _c2 = snapshotData['c2'] as bool?;
     _c3 = snapshotData['c3'] as bool?;
+    _editarcontacto = snapshotData['editarcontacto'] as bool?;
+    _latitud = snapshotData['Latitud'] as LatLng?;
   }
 
   static CollectionReference get collection =>
@@ -249,6 +261,8 @@ Map<String, dynamic> createUsuariosRecordData({
   bool? c1,
   bool? c2,
   bool? c3,
+  bool? editarcontacto,
+  LatLng? latitud,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -279,6 +293,8 @@ Map<String, dynamic> createUsuariosRecordData({
       'C1': c1,
       'c2': c2,
       'c3': c3,
+      'editarcontacto': editarcontacto,
+      'Latitud': latitud,
     }.withoutNulls,
   );
 
@@ -318,7 +334,9 @@ class UsuariosRecordDocumentEquality implements Equality<UsuariosRecord> {
         e1?.contacto3 == e2?.contacto3 &&
         e1?.c1 == e2?.c1 &&
         e1?.c2 == e2?.c2 &&
-        e1?.c3 == e2?.c3;
+        e1?.c3 == e2?.c3 &&
+        e1?.editarcontacto == e2?.editarcontacto &&
+        e1?.latitud == e2?.latitud;
   }
 
   @override
@@ -350,7 +368,9 @@ class UsuariosRecordDocumentEquality implements Equality<UsuariosRecord> {
         e?.contacto3,
         e?.c1,
         e?.c2,
-        e?.c3
+        e?.c3,
+        e?.editarcontacto,
+        e?.latitud
       ]);
 
   @override

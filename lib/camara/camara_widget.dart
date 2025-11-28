@@ -25,8 +25,6 @@ class _CamaraWidgetState extends State<CamaraWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CamaraModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

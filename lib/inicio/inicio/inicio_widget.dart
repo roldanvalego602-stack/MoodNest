@@ -81,8 +81,6 @@ class _InicioWidgetState extends State<InicioWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -183,85 +181,95 @@ class _InicioWidgetState extends State<InicioWidget>
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
-                  child: Container(
-                    width: double.infinity,
-                    height: 100.0,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 4.0,
-                          color: Color(0xB0F40303),
-                          offset: Offset(
-                            0.0,
-                            2.0,
-                          ),
-                        )
-                      ],
-                      gradient: LinearGradient(
-                        colors: [Color(0xFFFE0202), Color(0xFF8A0F0F)],
-                        stops: [0.0, 1.0],
-                        begin: AlignmentDirectional(0.31, -1.0),
-                        end: AlignmentDirectional(-0.31, 1.0),
-                      ),
-                      borderRadius: BorderRadius.circular(22.0),
-                      border: Border.all(
-                        color: Color(0xFFF90202),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 0.0, 0.0),
-                            child: Icon(
-                              Icons.report_gmailerrorred_rounded,
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              size: 24.0,
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.pushNamed(NumerosemergenciaWidget.routeName);
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 100.0,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 4.0,
+                            color: Color(0xB0F40303),
+                            offset: Offset(
+                              0.0,
+                              2.0,
                             ),
-                          ),
-                          Expanded(
-                            child: Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Text(
-                                'Emergencía',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      font: GoogleFonts.inter(
+                          )
+                        ],
+                        gradient: LinearGradient(
+                          colors: [Color(0xFFFE0202), Color(0xFF8A0F0F)],
+                          stops: [0.0, 1.0],
+                          begin: AlignmentDirectional(0.31, -1.0),
+                          end: AlignmentDirectional(-0.31, 1.0),
+                        ),
+                        borderRadius: BorderRadius.circular(22.0),
+                        border: Border.all(
+                          color: Color(0xFFF90202),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 0.0, 0.0),
+                              child: Icon(
+                                Icons.report_gmailerrorred_rounded,
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                size: 24.0,
+                              ),
+                            ),
+                            Expanded(
+                              child: Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Text(
+                                  'Emergencía',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontSize: 22.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      fontSize: 22.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
+                                ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 10.0, 0.0),
-                            child: Icon(
-                              Icons.report_gmailerrorred_rounded,
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              size: 24.0,
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 10.0, 0.0),
+                              child: Icon(
+                                Icons.report_gmailerrorred_rounded,
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                size: 24.0,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
