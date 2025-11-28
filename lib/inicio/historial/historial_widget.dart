@@ -1,7 +1,11 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 import 'historial_model.dart';
 export 'historial_model.dart';
 
@@ -24,6 +28,20 @@ class _HistorialWidgetState extends State<HistorialWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HistorialModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (valueOrDefault<bool>(currentUserDocument?.asistente, false) == true) {
+        _model.soundPlayer ??= AudioPlayer();
+        if (_model.soundPlayer!.playing) {
+          await _model.soundPlayer!.stop();
+        }
+        _model.soundPlayer!.setVolume(1.0);
+        _model.soundPlayer!
+            .setAsset('assets/audios/historial.mp3')
+            .then((_) => _model.soundPlayer!.play());
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -54,7 +72,7 @@ class _HistorialWidgetState extends State<HistorialWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 1.0, 0.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color(0x5F6B94FF),
+                  color: FlutterFlowTheme.of(context).iconos2,
                   shape: BoxShape.circle,
                 ),
                 child: Align(
@@ -63,7 +81,7 @@ class _HistorialWidgetState extends State<HistorialWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
                     child: Icon(
                       Icons.restore_rounded,
-                      color: Color(0xFF1000ED),
+                      color: FlutterFlowTheme.of(context).iconos,
                       size: 29.0,
                     ),
                   ),
@@ -96,139 +114,186 @@ class _HistorialWidgetState extends State<HistorialWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Align(
-                alignment: AlignmentDirectional(-1.0, 0.0),
-                child: Padding(
-                  padding: EdgeInsets.all(14.0),
-                  child: Text(
-                    'Registro de acciones del muñeco',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.notoSansJp(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  child: Padding(
+                    padding: EdgeInsets.all(14.0),
+                    child: Text(
+                      'Registro de acciones del muñeco',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.notoSansJp(
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                            color: Color(0x96000000),
+                            fontSize: 15.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
                             fontStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .fontStyle,
                           ),
-                          color: Color(0x96000000),
-                          fontSize: 15.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.w500,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                        ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(70.0, 0.0, 70.0, 0.0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 4.0,
-                        color: Color(0x33000000),
-                        offset: Offset(
-                          0.0,
-                          2.0,
-                        ),
-                      )
-                    ],
-                    gradient: LinearGradient(
-                      colors: [
-                        FlutterFlowTheme.of(context).accent4,
-                        FlutterFlowTheme.of(context).primary
-                      ],
-                      stops: [0.0, 1.0],
-                      begin: AlignmentDirectional(0.0, -1.0),
-                      end: AlignmentDirectional(0, 1.0),
                     ),
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Color(0x5F6B94FF),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsets.all(6.0),
-                                child: Icon(
-                                  Icons.more_time,
-                                  color: Color(0xFF1000ED),
-                                  size: 25.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Text(
-                          'Emoción: Triste',
-                          style: FlutterFlowTheme.of(context)
-                              .headlineMedium
-                              .override(
-                                font: GoogleFonts.roboto(
-                                  fontWeight: FontWeight.w600,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineMedium
-                                      .fontStyle,
-                                ),
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 20.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w600,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .fontStyle,
-                              ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            '19 de noviembre a las 2:00',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .override(
-                                  font: GoogleFonts.roboto(
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .headlineMedium
-                                        .fontStyle,
-                                  ),
-                                  color: Color(0x940A1C33),
-                                  fontSize: 12.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineMedium
-                                      .fontStyle,
-                                ),
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                 ),
-              ),
-            ],
+                StreamBuilder<List<HistorialRecord>>(
+                  stream: queryHistorialRecord(
+                    queryBuilder: (historialRecord) => historialRecord
+                        .orderBy('tiempohistoria', descending: true),
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              FlutterFlowTheme.of(context).primary,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                    List<HistorialRecord> listViewHistorialRecordList =
+                        snapshot.data!;
+
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: listViewHistorialRecordList.length,
+                      itemBuilder: (context, listViewIndex) {
+                        final listViewHistorialRecord =
+                            listViewHistorialRecordList[listViewIndex];
+                        return Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              70.0, 0.0, 70.0, 0.0),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 4.0,
+                                  color: Color(0x33000000),
+                                  offset: Offset(
+                                    0.0,
+                                    2.0,
+                                  ),
+                                )
+                              ],
+                              gradient: LinearGradient(
+                                colors: [
+                                  FlutterFlowTheme.of(context).accent4,
+                                  FlutterFlowTheme.of(context).primary
+                                ],
+                                stops: [0.0, 1.0],
+                                begin: AlignmentDirectional(0.0, -1.0),
+                                end: AlignmentDirectional(0, 1.0),
+                              ),
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(10.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Color(0x5F6B94FF),
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Padding(
+                                          padding: EdgeInsets.all(6.0),
+                                          child: Icon(
+                                            Icons.more_time,
+                                            color: Color(0xFF1000ED),
+                                            size: 25.0,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Text(
+                                    listViewHistorialRecord.historia,
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineMedium
+                                        .override(
+                                          font: GoogleFonts.roboto(
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontStyle,
+                                          ),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontSize: 20.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Text(
+                                      listViewHistorialRecord
+                                          .tiempohistoria!.secondsSinceEpoch
+                                          .toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .override(
+                                            font: GoogleFonts.roboto(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: Color(0x940A1C33),
+                                            fontSize: 12.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

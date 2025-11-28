@@ -9,5 +9,7 @@ export '/iniciary_crear_sesion/iniciary_crear_sesion_widget.dart'
     show IniciaryCrearSesionWidget;
 export '/formulario/formulario_widget.dart' show FormularioWidget;
 export '/localizar/localizar_widget.dart' show LocalizarWidget;
+export '/inicio/agregarnota/agregarnota_widget.dart' show AgregarnotaWidget;
+export '/camara/camara_widget.dart' show CamaraWidget;
+export '/ayuday_soporte/ayuday_soporte_widget.dart' show AyudaySoporteWidget;
 export '/editar/editar_widget.dart' show EditarWidget;
-export '/inicio/notas_copy/notas_copy_widget.dart' show NotasCopyWidget;

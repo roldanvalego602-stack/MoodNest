@@ -15,9 +15,6 @@ class FormularioModel extends FlutterFlowModel<FormularioWidget> {
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  // State field(s) for DropDown widget.
-  String? dropDownValue1;
-  FormFieldController<String>? dropDownValueController1;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode3;
   TextEditingController? textController3;
@@ -27,11 +24,20 @@ class FormularioModel extends FlutterFlowModel<FormularioWidget> {
   TextEditingController? textController4;
   String? Function(BuildContext, String?)? textController4Validator;
   // State field(s) for DropDown widget.
-  String? dropDownValue2;
-  FormFieldController<String>? dropDownValueController2;
-  // State field(s) for DropDown widget.
-  List<String>? dropDownValue3;
-  FormFieldController<List<String>>? dropDownValueController3;
+  List<String>? dropDownValue;
+  FormFieldController<List<String>>? dropDownValueController;
+  // State field(s) for Contacto widget.
+  FocusNode? contactoFocusNode;
+  TextEditingController? contactoTextController;
+  String? Function(BuildContext, String?)? contactoTextControllerValidator;
+  // State field(s) for Contacto2 widget.
+  FocusNode? contacto2FocusNode;
+  TextEditingController? contacto2TextController;
+  String? Function(BuildContext, String?)? contacto2TextControllerValidator;
+  // State field(s) for Contacto3 widget.
+  FocusNode? contacto3FocusNode;
+  TextEditingController? contacto3TextController;
+  String? Function(BuildContext, String?)? contacto3TextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -49,5 +55,14 @@ class FormularioModel extends FlutterFlowModel<FormularioWidget> {
 
     textFieldFocusNode4?.dispose();
     textController4?.dispose();
+
+    contactoFocusNode?.dispose();
+    contactoTextController?.dispose();
+
+    contacto2FocusNode?.dispose();
+    contacto2TextController?.dispose();
+
+    contacto3FocusNode?.dispose();
+    contacto3TextController?.dispose();
   }
 }

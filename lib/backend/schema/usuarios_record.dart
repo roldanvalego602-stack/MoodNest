@@ -116,6 +116,31 @@ class UsuariosRecord extends FirestoreRecord {
   DateTime? get creartexto => _creartexto;
   bool hasCreartexto() => _creartexto != null;
 
+  // "asistente" field.
+  bool? _asistente;
+  bool get asistente => _asistente ?? false;
+  bool hasAsistente() => _asistente != null;
+
+  // "notassssss" field.
+  bool? _notassssss;
+  bool get notassssss => _notassssss ?? false;
+  bool hasNotassssss() => _notassssss != null;
+
+  // "Contacto1" field.
+  int? _contacto1;
+  int get contacto1 => _contacto1 ?? 0;
+  bool hasContacto1() => _contacto1 != null;
+
+  // "Contacto2" field.
+  int? _contacto2;
+  int get contacto2 => _contacto2 ?? 0;
+  bool hasContacto2() => _contacto2 != null;
+
+  // "Contacto3" field.
+  int? _contacto3;
+  int get contacto3 => _contacto3 ?? 0;
+  bool hasContacto3() => _contacto3 != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -137,6 +162,11 @@ class UsuariosRecord extends FirestoreRecord {
     _sensible = getDataList(snapshotData['sensible']);
     _texto = snapshotData['Texto'] as String?;
     _creartexto = snapshotData['Creartexto'] as DateTime?;
+    _asistente = snapshotData['asistente'] as bool?;
+    _notassssss = snapshotData['notassssss'] as bool?;
+    _contacto1 = castToType<int>(snapshotData['Contacto1']);
+    _contacto2 = castToType<int>(snapshotData['Contacto2']);
+    _contacto3 = castToType<int>(snapshotData['Contacto3']);
   }
 
   static CollectionReference get collection =>
@@ -193,6 +223,11 @@ Map<String, dynamic> createUsuariosRecordData({
   bool? formulario,
   String? texto,
   DateTime? creartexto,
+  bool? asistente,
+  bool? notassssss,
+  int? contacto1,
+  int? contacto2,
+  int? contacto3,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -215,6 +250,11 @@ Map<String, dynamic> createUsuariosRecordData({
       'Formulario': formulario,
       'Texto': texto,
       'Creartexto': creartexto,
+      'asistente': asistente,
+      'notassssss': notassssss,
+      'Contacto1': contacto1,
+      'Contacto2': contacto2,
+      'Contacto3': contacto3,
     }.withoutNulls,
   );
 
@@ -246,7 +286,12 @@ class UsuariosRecordDocumentEquality implements Equality<UsuariosRecord> {
         e1?.formulario == e2?.formulario &&
         listEquality.equals(e1?.sensible, e2?.sensible) &&
         e1?.texto == e2?.texto &&
-        e1?.creartexto == e2?.creartexto;
+        e1?.creartexto == e2?.creartexto &&
+        e1?.asistente == e2?.asistente &&
+        e1?.notassssss == e2?.notassssss &&
+        e1?.contacto1 == e2?.contacto1 &&
+        e1?.contacto2 == e2?.contacto2 &&
+        e1?.contacto3 == e2?.contacto3;
   }
 
   @override
@@ -270,7 +315,12 @@ class UsuariosRecordDocumentEquality implements Equality<UsuariosRecord> {
         e?.formulario,
         e?.sensible,
         e?.texto,
-        e?.creartexto
+        e?.creartexto,
+        e?.asistente,
+        e?.notassssss,
+        e?.contacto1,
+        e?.contacto2,
+        e?.contacto3
       ]);
 
   @override

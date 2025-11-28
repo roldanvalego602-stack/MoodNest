@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'iniciary_crear_sesion_widget.dart' show IniciaryCrearSesionWidget;
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 
 class IniciaryCrearSesionModel
     extends FlutterFlowModel<IniciaryCrearSesionWidget> {
@@ -25,6 +26,10 @@ class IniciaryCrearSesionModel
   late bool passwordCreateVisibility;
   String? Function(BuildContext, String?)?
       passwordCreateTextControllerValidator;
+  // State field(s) for Switch widget.
+  bool? switchValue;
+  AudioPlayer? soundPlayer1;
+  AudioPlayer? soundPlayer2;
   // State field(s) for emailAddress widget.
   FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressTextController;

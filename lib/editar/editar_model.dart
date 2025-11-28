@@ -16,22 +16,8 @@ class EditarModel extends FlutterFlowModel<EditarWidget> {
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
   // State field(s) for DropDown widget.
-  String? dropDownValue1;
-  FormFieldController<String>? dropDownValueController1;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode3;
-  TextEditingController? textController3;
-  String? Function(BuildContext, String?)? textController3Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode4;
-  TextEditingController? textController4;
-  String? Function(BuildContext, String?)? textController4Validator;
-  // State field(s) for DropDown widget.
-  String? dropDownValue2;
-  FormFieldController<String>? dropDownValueController2;
-  // State field(s) for DropDown widget.
-  List<String>? dropDownValue3;
-  FormFieldController<List<String>>? dropDownValueController3;
+  List<String>? dropDownValue;
+  FormFieldController<List<String>>? dropDownValueController;
 
   @override
   void initState(BuildContext context) {}
@@ -43,11 +29,5 @@ class EditarModel extends FlutterFlowModel<EditarWidget> {
 
     textFieldFocusNode2?.dispose();
     textController2?.dispose();
-
-    textFieldFocusNode3?.dispose();
-    textController3?.dispose();
-
-    textFieldFocusNode4?.dispose();
-    textController4?.dispose();
   }
 }

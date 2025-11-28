@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/main.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 import '/index.dart';
@@ -120,7 +121,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: PerfilWidget.routeName,
           path: PerfilWidget.routePath,
-          builder: (context, params) => PerfilWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'perfil')
+              : PerfilWidget(),
         ),
         FFRoute(
           name: IniciaryCrearSesionWidget.routeName,
@@ -138,18 +141,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => LocalizarWidget(),
         ),
         FFRoute(
+          name: AgregarnotaWidget.routeName,
+          path: AgregarnotaWidget.routePath,
+          builder: (context, params) => AgregarnotaWidget(),
+        ),
+        FFRoute(
+          name: CamaraWidget.routeName,
+          path: CamaraWidget.routePath,
+          builder: (context, params) => CamaraWidget(),
+        ),
+        FFRoute(
+          name: AyudaySoporteWidget.routeName,
+          path: AyudaySoporteWidget.routePath,
+          builder: (context, params) => AyudaySoporteWidget(),
+        ),
+        FFRoute(
           name: EditarWidget.routeName,
           path: EditarWidget.routePath,
           builder: (context, params) => EditarWidget(),
-        ),
-        FFRoute(
-          name: NotasCopyWidget.routeName,
-          path: NotasCopyWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'NotasCopy')
-              : NotasCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
+      observers: [routeObserver],
     );
 
 extension NavParamExtensions on Map<String, String?> {
@@ -333,9 +345,9 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: Colors.transparent,
+                  color: FlutterFlowTheme.of(context).primaryBackground,
                   child: Image.asset(
-                    'assets/images/logo_azul.png',
+                    'assets/images/momo-Photoroom.png',
                     fit: BoxFit.contain,
                   ),
                 )

@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'notas_copy_widget.dart' show NotasCopyWidget;
+import 'agregarnota_widget.dart' show AgregarnotaWidget;
 import 'package:flutter/material.dart';
 
-class NotasCopyModel extends FlutterFlowModel<NotasCopyWidget> {
+class AgregarnotaModel extends FlutterFlowModel<AgregarnotaWidget> {
   ///  Local state fields for this page.
 
   String? notaTexto;

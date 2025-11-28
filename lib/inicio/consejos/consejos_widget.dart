@@ -1,8 +1,11 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 import 'consejos_model.dart';
 export 'consejos_model.dart';
 
@@ -25,6 +28,20 @@ class _ConsejosWidgetState extends State<ConsejosWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ConsejosModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (valueOrDefault<bool>(currentUserDocument?.asistente, false) == true) {
+        _model.soundPlayer ??= AudioPlayer();
+        if (_model.soundPlayer!.playing) {
+          await _model.soundPlayer!.stop();
+        }
+        _model.soundPlayer!.setVolume(1.0);
+        _model.soundPlayer!
+            .setAsset('assets/audios/consejos.mp3')
+            .then((_) => _model.soundPlayer!.play());
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -55,14 +72,14 @@ class _ConsejosWidgetState extends State<ConsejosWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color(0x5FFF9D6B),
+                  color: FlutterFlowTheme.of(context).iconos2,
                   shape: BoxShape.circle,
                 ),
                 child: Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Icon(
                     Icons.question_mark,
-                    color: Color(0xFFD67423),
+                    color: FlutterFlowTheme.of(context).iconos,
                     size: 29.0,
                   ),
                 ),

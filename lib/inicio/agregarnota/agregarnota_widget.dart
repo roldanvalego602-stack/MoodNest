@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -5,28 +6,28 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'notas_copy_model.dart';
-export 'notas_copy_model.dart';
+import 'agregarnota_model.dart';
+export 'agregarnota_model.dart';
 
-class NotasCopyWidget extends StatefulWidget {
-  const NotasCopyWidget({super.key});
+class AgregarnotaWidget extends StatefulWidget {
+  const AgregarnotaWidget({super.key});
 
-  static String routeName = 'NotasCopy';
-  static String routePath = '/notasCopy';
+  static String routeName = 'Agregarnota';
+  static String routePath = '/agregarnota';
 
   @override
-  State<NotasCopyWidget> createState() => _NotasCopyWidgetState();
+  State<AgregarnotaWidget> createState() => _AgregarnotaWidgetState();
 }
 
-class _NotasCopyWidgetState extends State<NotasCopyWidget> {
-  late NotasCopyModel _model;
+class _AgregarnotaWidgetState extends State<AgregarnotaWidget> {
+  late AgregarnotaModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => NotasCopyModel());
+    _model = createModel(context, () => AgregarnotaModel());
 
     _model.textController ??= TextEditingController(text: _model.notaTexto);
     _model.textFieldFocusNode ??= FocusNode();
@@ -68,7 +69,7 @@ class _NotasCopyWidgetState extends State<NotasCopyWidget> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color(0x5F60EB72),
+                    color: FlutterFlowTheme.of(context).iconos2,
                     shape: BoxShape.circle,
                   ),
                   child: Align(
@@ -78,7 +79,7 @@ class _NotasCopyWidgetState extends State<NotasCopyWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 1.0, 0.0),
                       child: Icon(
                         Icons.arrow_back,
-                        color: Color(0xFF025D27),
+                        color: FlutterFlowTheme.of(context).iconos,
                         size: 29.0,
                       ),
                     ),
@@ -304,6 +305,11 @@ class _NotasCopyWidgetState extends State<NotasCopyWidget> {
                           },
                         ),
                       });
+
+                      await currentUserReference!
+                          .update(createUsuariosRecordData(
+                        notassssss: true,
+                      ));
                       context.safePop();
                     },
                     text: 'Guardar',

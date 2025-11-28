@@ -7,6 +7,8 @@ import 'schema/util/firestore_util.dart';
 
 import 'schema/usuarios_record.dart';
 import 'schema/notas_record.dart';
+import 'schema/historial_record.dart';
+import 'schema/chat_a_i_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -17,6 +19,8 @@ export 'schema/util/schema_util.dart';
 
 export 'schema/usuarios_record.dart';
 export 'schema/notas_record.dart';
+export 'schema/historial_record.dart';
+export 'schema/chat_a_i_record.dart';
 
 /// Functions to query UsuariosRecords (as a Stream and as a Future).
 Future<int> queryUsuariosRecordCount({
@@ -87,6 +91,80 @@ Future<List<NotasRecord>> queryNotasRecordOnce({
     queryCollectionOnce(
       NotasRecord.collection,
       NotasRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query HistorialRecords (as a Stream and as a Future).
+Future<int> queryHistorialRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      HistorialRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<HistorialRecord>> queryHistorialRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      HistorialRecord.collection,
+      HistorialRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<HistorialRecord>> queryHistorialRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      HistorialRecord.collection,
+      HistorialRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ChatAIRecords (as a Stream and as a Future).
+Future<int> queryChatAIRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ChatAIRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ChatAIRecord>> queryChatAIRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ChatAIRecord.collection,
+      ChatAIRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ChatAIRecord>> queryChatAIRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ChatAIRecord.collection,
+      ChatAIRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

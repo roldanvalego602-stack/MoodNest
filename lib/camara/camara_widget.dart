@@ -1,30 +1,30 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'localizar_model.dart';
-export 'localizar_model.dart';
+import 'camara_model.dart';
+export 'camara_model.dart';
 
-class LocalizarWidget extends StatefulWidget {
-  const LocalizarWidget({super.key});
+class CamaraWidget extends StatefulWidget {
+  const CamaraWidget({super.key});
 
-  static String routeName = 'Localizar';
-  static String routePath = '/localizar';
+  static String routeName = 'Camara';
+  static String routePath = '/camara';
 
   @override
-  State<LocalizarWidget> createState() => _LocalizarWidgetState();
+  State<CamaraWidget> createState() => _CamaraWidgetState();
 }
 
-class _LocalizarWidgetState extends State<LocalizarWidget> {
-  late LocalizarModel _model;
+class _CamaraWidgetState extends State<CamaraWidget> {
+  late CamaraModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => LocalizarModel());
+    _model = createModel(context, () => CamaraModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -55,16 +55,16 @@ class _LocalizarWidgetState extends State<LocalizarWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 1.0, 0.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).iconos2,
+                  color: Color(0x5FFF6B6D),
                   shape: BoxShape.circle,
                 ),
                 child: Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
-                    child: FaIcon(
-                      FontAwesomeIcons.mapMarkerAlt,
-                      color: FlutterFlowTheme.of(context).iconos,
+                    child: Icon(
+                      Icons.camera_alt,
+                      color: Color(0xCAF41141),
                       size: 29.0,
                     ),
                   ),
@@ -75,7 +75,7 @@ class _LocalizarWidgetState extends State<LocalizarWidget> {
           title: Align(
             alignment: AlignmentDirectional(-1.0, 0.0),
             child: Text(
-              'Localizar',
+              'Cámara',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     font: GoogleFonts.interTight(
                       fontWeight: FontWeight.w600,
@@ -99,7 +99,20 @@ class _LocalizarWidgetState extends State<LocalizarWidget> {
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [],
+            children: [
+              Padding(
+                padding: EdgeInsets.all(16.0),
+                child: FlutterFlowVideoPlayer(
+                  path: 'https://assets.mixkit.co/videos/529/529-720.mp4',
+                  videoType: VideoType.network,
+                  autoPlay: false,
+                  looping: true,
+                  showControls: true,
+                  allowFullScreen: true,
+                  allowPlaybackSpeedMenu: false,
+                ),
+              ),
+            ],
           ),
         ),
       ),

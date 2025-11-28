@@ -18,8 +18,6 @@ void main() async {
 
   await initFirebase();
 
-  await FlutterFlowTheme.initialize();
-
   runApp(MyApp());
 }
 
@@ -41,7 +39,7 @@ class MyAppScrollBehavior extends MaterialScrollBehavior {
 }
 
 class _MyAppState extends State<MyApp> {
-  ThemeMode _themeMode = FlutterFlowTheme.themeMode;
+  ThemeMode _themeMode = ThemeMode.system;
 
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
@@ -68,7 +66,7 @@ class _MyAppState extends State<MyApp> {
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
-    userStream = smileKidsFirebaseUserStream()
+    userStream = momoFirebaseUserStream()
       ..listen((user) {
         _appStateNotifier.update(user);
       });
@@ -88,14 +86,13 @@ class _MyAppState extends State<MyApp> {
 
   void setThemeMode(ThemeMode mode) => safeSetState(() {
         _themeMode = mode;
-        FlutterFlowTheme.saveThemeMode(mode);
       });
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'Smile Kids',
+      title: 'MOMO',
       scrollBehavior: MyAppScrollBehavior(),
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -105,10 +102,6 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(
         brightness: Brightness.light,
-        useMaterial3: false,
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
         useMaterial3: false,
       ),
       themeMode: _themeMode,
@@ -152,7 +145,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'Historial': HistorialWidget(),
       'Notas': NotasWidget(),
       'Chat': ChatWidget(),
-      'NotasCopy': NotasCopyWidget(),
+      'perfil': PerfilWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -206,10 +199,10 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.sticky_note_2,
+              Icons.person,
               size: 24.0,
             ),
-            label: 'Notas',
+            label: 'Perfil',
             tooltip: '',
           )
         ],

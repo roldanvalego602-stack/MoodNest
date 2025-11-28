@@ -1,10 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 import 'perfil_model.dart';
 export 'perfil_model.dart';
 
@@ -28,7 +30,21 @@ class _PerfilWidgetState extends State<PerfilWidget> {
     super.initState();
     _model = createModel(context, () => PerfilModel());
 
-    _model.switchValue1 = false;
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (valueOrDefault<bool>(currentUserDocument?.asistente, false) == true) {
+        _model.soundPlayer ??= AudioPlayer();
+        if (_model.soundPlayer!.playing) {
+          await _model.soundPlayer!.stop();
+        }
+        _model.soundPlayer!.setVolume(1.0);
+        _model.soundPlayer!
+            .setAsset('assets/audios/inicio_momo1.2.mp3')
+            .then((_) => _model.soundPlayer!.play());
+      }
+    });
+
+    _model.switchValue1 = true;
     _model.switchValue2 = false;
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -59,14 +75,14 @@ class _PerfilWidgetState extends State<PerfilWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color(0x5F6B6CFF),
+                  color: FlutterFlowTheme.of(context).iconos2,
                   shape: BoxShape.circle,
                 ),
                 child: Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Icon(
                     Icons.person,
-                    color: Color(0xFF1800FF),
+                    color: FlutterFlowTheme.of(context).iconos,
                     size: 29.0,
                   ),
                 ),
@@ -129,8 +145,8 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                 Padding(
                   padding: EdgeInsets.all(16.0),
                   child: Container(
-                    width: 310.0,
-                    height: 120.0,
+                    width: 350.0,
+                    height: 130.0,
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
@@ -163,8 +179,34 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 10.0),
                             child: Container(
-                              width: 70.0,
-                              height: 70.0,
+                              width: () {
+                                if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointSmall) {
+                                  return 50.0;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointMedium) {
+                                  return 60.0;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointLarge) {
+                                  return 60.0;
+                                } else {
+                                  return 70.0;
+                                }
+                              }(),
+                              height: () {
+                                if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointSmall) {
+                                  return 50.0;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointMedium) {
+                                  return 60.0;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointLarge) {
+                                  return 60.0;
+                                } else {
+                                  return 70.0;
+                                }
+                              }(),
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
@@ -301,7 +343,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(24.0),
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -538,37 +580,32 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                 ),
                                 Expanded(
                                   child: Align(
-                                    alignment: AlignmentDirectional(0.0, -1.0),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 0.0, 0.0),
-                                      child: AuthUserStreamWidget(
-                                        builder: (context) => Text(
-                                          valueOrDefault(
-                                              currentUserDocument?.nsensible,
-                                              ''),
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                color: Color(0x96000000),
-                                                fontSize: 15.0,
-                                                letterSpacing: 0.0,
+                                      child: Text(
+                                        'Ruidos fuertes, Luces Brillantes',
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
                                                 fontWeight: FontWeight.bold,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                        ),
+                                              color: Color(0x96000000),
+                                              fontSize: 15.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                       ),
                                     ),
                                   ),
@@ -672,271 +709,172 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                             .fontStyle,
                                       ),
                                 ),
-                                Switch.adaptive(
-                                  value: _model.switchValue1!,
-                                  onChanged: (newValue) async {
-                                    safeSetState(
-                                        () => _model.switchValue1 = newValue);
-                                  },
-                                  activeColor: Color(0xFF41909C),
-                                  activeTrackColor: Color(0xFF25C6DE),
-                                  inactiveTrackColor: Color(0xFFD2E3FB),
-                                  inactiveThumbColor:
-                                      FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                ),
+                                if (valueOrDefault<bool>(
+                                        currentUserDocument?.asistente,
+                                        false) ==
+                                    true)
+                                  AuthUserStreamWidget(
+                                    builder: (context) => Switch.adaptive(
+                                      value: _model.switchValue1!,
+                                      onChanged: (newValue) async {
+                                        safeSetState(() =>
+                                            _model.switchValue1 = newValue);
+
+                                        if (!newValue) {
+                                          await currentUserReference!
+                                              .update(createUsuariosRecordData(
+                                            asistente: false,
+                                          ));
+                                        }
+                                      },
+                                      activeColor: Color(0xFF41909C),
+                                      activeTrackColor: Color(0xFF25C6DE),
+                                      inactiveTrackColor: Color(0xFFD2E3FB),
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                    ),
+                                  ),
+                                if (valueOrDefault<bool>(
+                                        currentUserDocument?.asistente,
+                                        false) ==
+                                    false)
+                                  AuthUserStreamWidget(
+                                    builder: (context) => Switch.adaptive(
+                                      value: _model.switchValue2!,
+                                      onChanged: (newValue) async {
+                                        safeSetState(() =>
+                                            _model.switchValue2 = newValue);
+                                        if (newValue) {
+                                          await currentUserReference!
+                                              .update(createUsuariosRecordData(
+                                            asistente: true,
+                                          ));
+                                        }
+                                      },
+                                      activeColor: Color(0xFF41909C),
+                                      activeTrackColor: Color(0xFF25C6DE),
+                                      inactiveTrackColor: Color(0xFFD2E3FB),
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                    ),
+                                  ),
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Modo Oscuro',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.pushNamed(AyudaySoporteWidget.routeName);
+                    },
+                    child: Container(
+                      width: 270.0,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 4.0,
+                            color: Color(0x33000000),
+                            offset: Offset(
+                              0.0,
+                              2.0,
+                            ),
+                          )
+                        ],
+                        gradient: LinearGradient(
+                          colors: [
+                            FlutterFlowTheme.of(context).primaryBackground,
+                            Color(0xA1E0F4F2)
+                          ],
+                          stops: [0.0, 1.0],
+                          begin: AlignmentDirectional(0.0, -1.0),
+                          end: AlignmentDirectional(0, 1.0),
+                        ),
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(14.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Container(
+                              width: 50.0,
+                              height: 50.0,
+                              decoration: BoxDecoration(
+                                color: Color(0x55595959),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Icon(
+                                  Icons.help_outline,
+                                  color: Color(0xF1000000),
+                                  size: 31.0,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(4.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Ayuda y Soporte',
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                color: Colors.black,
+                                                fontSize: 20.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                         ),
-                                        fontSize: 17.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
-                                      ),
-                                ),
-                                Switch.adaptive(
-                                  value: _model.switchValue2!,
-                                  onChanged: (newValue) async {
-                                    safeSetState(
-                                        () => _model.switchValue2 = newValue);
-                                    if (newValue) {
-                                      setDarkModeSetting(
-                                          context, ThemeMode.dark);
-                                    }
-                                  },
-                                  activeColor: Color(0xFF41909C),
-                                  activeTrackColor: Color(0xFF25C6DE),
-                                  inactiveTrackColor: Color(0xFFD2E3FB),
-                                  inactiveThumbColor:
-                                      FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Container(
-                    width: 270.0,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 4.0,
-                          color: Color(0x33000000),
-                          offset: Offset(
-                            0.0,
-                            2.0,
-                          ),
-                        )
-                      ],
-                      gradient: LinearGradient(
-                        colors: [
-                          FlutterFlowTheme.of(context).primaryBackground,
-                          Color(0xA1E0F4F2)
-                        ],
-                        stops: [0.0, 1.0],
-                        begin: AlignmentDirectional(0.0, -1.0),
-                        end: AlignmentDirectional(0, 1.0),
-                      ),
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(14.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Container(
-                            width: 50.0,
-                            height: 50.0,
-                            decoration: BoxDecoration(
-                              color: Color(0x55595959),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: FaIcon(
-                                FontAwesomeIcons.cog,
-                                color: Color(0xF1000000),
-                                size: 31.0,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(4.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Expanded(
-                                  child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 10.0, 0.0, 0.0),
-                                      child: Text(
-                                        'Configuración General',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.inter(
-                                                fontWeight: FontWeight.bold,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              color: Colors.black,
-                                              fontSize: 20.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 0.0),
-                            child: Icon(
-                              Icons.keyboard_arrow_right,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 28.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Container(
-                    width: 270.0,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 4.0,
-                          color: Color(0x33000000),
-                          offset: Offset(
-                            0.0,
-                            2.0,
-                          ),
-                        )
-                      ],
-                      gradient: LinearGradient(
-                        colors: [
-                          FlutterFlowTheme.of(context).primaryBackground,
-                          Color(0xA1E0F4F2)
-                        ],
-                        stops: [0.0, 1.0],
-                        begin: AlignmentDirectional(0.0, -1.0),
-                        end: AlignmentDirectional(0, 1.0),
-                      ),
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(14.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Container(
-                            width: 50.0,
-                            height: 50.0,
-                            decoration: BoxDecoration(
-                              color: Color(0x55595959),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 0.0),
                               child: Icon(
-                                Icons.help_outline,
-                                color: Color(0xF1000000),
-                                size: 31.0,
+                                Icons.keyboard_arrow_right,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 28.0,
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(4.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Expanded(
-                                  child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 10.0, 0.0, 0.0),
-                                      child: Text(
-                                        'Ayuda y Soporte',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.inter(
-                                                fontWeight: FontWeight.bold,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              color: Colors.black,
-                                              fontSize: 20.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 0.0),
-                            child: Icon(
-                              Icons.keyboard_arrow_right,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 28.0,
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -953,6 +891,30 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                       GoRouter.of(context).prepareAuthEvent();
                       await authManager.signOut();
                       GoRouter.of(context).clearRedirectLocation();
+
+                      var confirmDialogResponse = await showDialog<bool>(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('Cerrar Sesión'),
+                                content: Text(
+                                    '¿Seguro que quieres cerrar tu sesión?'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () => Navigator.pop(
+                                        alertDialogContext, false),
+                                    child: Text('No'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext, true),
+                                    child: Text('Si'),
+                                  ),
+                                ],
+                              );
+                            },
+                          ) ??
+                          false;
 
                       context.goNamedAuth(
                           IniciaryCrearSesionWidget.routeName, context.mounted);
