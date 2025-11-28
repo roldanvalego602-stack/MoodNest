@@ -141,6 +141,21 @@ class UsuariosRecord extends FirestoreRecord {
   int get contacto3 => _contacto3 ?? 0;
   bool hasContacto3() => _contacto3 != null;
 
+  // "C1" field.
+  bool? _c1;
+  bool get c1 => _c1 ?? false;
+  bool hasC1() => _c1 != null;
+
+  // "c2" field.
+  bool? _c2;
+  bool get c2 => _c2 ?? false;
+  bool hasC2() => _c2 != null;
+
+  // "c3" field.
+  bool? _c3;
+  bool get c3 => _c3 ?? false;
+  bool hasC3() => _c3 != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -167,6 +182,9 @@ class UsuariosRecord extends FirestoreRecord {
     _contacto1 = castToType<int>(snapshotData['Contacto1']);
     _contacto2 = castToType<int>(snapshotData['Contacto2']);
     _contacto3 = castToType<int>(snapshotData['Contacto3']);
+    _c1 = snapshotData['C1'] as bool?;
+    _c2 = snapshotData['c2'] as bool?;
+    _c3 = snapshotData['c3'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -228,6 +246,9 @@ Map<String, dynamic> createUsuariosRecordData({
   int? contacto1,
   int? contacto2,
   int? contacto3,
+  bool? c1,
+  bool? c2,
+  bool? c3,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -255,6 +276,9 @@ Map<String, dynamic> createUsuariosRecordData({
       'Contacto1': contacto1,
       'Contacto2': contacto2,
       'Contacto3': contacto3,
+      'C1': c1,
+      'c2': c2,
+      'c3': c3,
     }.withoutNulls,
   );
 
@@ -291,7 +315,10 @@ class UsuariosRecordDocumentEquality implements Equality<UsuariosRecord> {
         e1?.notassssss == e2?.notassssss &&
         e1?.contacto1 == e2?.contacto1 &&
         e1?.contacto2 == e2?.contacto2 &&
-        e1?.contacto3 == e2?.contacto3;
+        e1?.contacto3 == e2?.contacto3 &&
+        e1?.c1 == e2?.c1 &&
+        e1?.c2 == e2?.c2 &&
+        e1?.c3 == e2?.c3;
   }
 
   @override
@@ -320,7 +347,10 @@ class UsuariosRecordDocumentEquality implements Equality<UsuariosRecord> {
         e?.notassssss,
         e?.contacto1,
         e?.contacto2,
-        e?.contacto3
+        e?.contacto3,
+        e?.c1,
+        e?.c2,
+        e?.c3
       ]);
 
   @override

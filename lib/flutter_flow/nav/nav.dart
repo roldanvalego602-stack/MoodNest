@@ -159,6 +159,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: EditarWidget.routeName,
           path: EditarWidget.routePath,
           builder: (context, params) => EditarWidget(),
+        ),
+        FFRoute(
+          name: NumerosemergenciaWidget.routeName,
+          path: NumerosemergenciaWidget.routePath,
+          builder: (context, params) => NumerosemergenciaWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

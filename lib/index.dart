@@ -13,3 +13,5 @@ export '/inicio/agregarnota/agregarnota_widget.dart' show AgregarnotaWidget;
 export '/camara/camara_widget.dart' show CamaraWidget;
 export '/ayuday_soporte/ayuday_soporte_widget.dart' show AyudaySoporteWidget;
 export '/editar/editar_widget.dart' show EditarWidget;
+export '/numerosemergencia/numerosemergencia_widget.dart'
+    show NumerosemergenciaWidget;

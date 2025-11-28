@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
 import 'chat_model.dart';
@@ -350,10 +351,9 @@ class _ChatWidgetState extends State<ChatWidget> {
                       child: SizedBox(
                         width: 50.0,
                         height: 50.0,
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            FlutterFlowTheme.of(context).primary,
-                          ),
+                        child: SpinKitWave(
+                          color: FlutterFlowTheme.of(context).primary,
+                          size: 50.0,
                         ),
                       ),
                     );

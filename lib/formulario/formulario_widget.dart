@@ -1617,6 +1617,14 @@ class _FormularioWidgetState extends State<FormularioWidget> {
                             formulario: true,
                             nedad: _model.textController4.text,
                             tedad: _model.textController2.text,
+                            contacto1: int.tryParse(
+                                _model.contactoTextController.text),
+                            contacto2: int.tryParse(
+                                _model.contacto2TextController.text),
+                            contacto3: int.tryParse(
+                                _model.contacto3TextController.text),
+                            c2: _model.contacto2TextController.text != '',
+                            c3: _model.contacto3TextController.text != '',
                           ),
                           ...mapToFirestore(
                             {
